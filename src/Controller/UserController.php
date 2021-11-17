@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace App\Controller;
 
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
@@ -10,13 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
 {
-    // /**
-    //  * @Route("/users", name="user_list")
-    //  */
-    // public function listAction()
-    // {
-    //     return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository('AppBundle:User')->findAll()]);
-    // }
+    /**
+     * @Route("/users", name="user_list")
+     */
+    public function listAction()
+    {
+        return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository('AppBundle:User')->findAll()]);
+    }
 
     // /**
     //  * @Route("/users/create", name="user_create")

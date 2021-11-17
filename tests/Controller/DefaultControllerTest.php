@@ -2,7 +2,6 @@
 
 namespace App\Tests\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
@@ -11,7 +10,7 @@ class DefaultControllerTest extends WebTestCase
     public function testHomepageIsUp()
     {
         $client = static::createClient();
-        $client->request('GET', '/');
+        $client->request('GET', '/login');
 
         $this->assertResponseIsSuccessful();
     }

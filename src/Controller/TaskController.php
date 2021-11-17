@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace App\Controller;
 
 use AppBundle\Entity\Task;
 use AppBundle\Form\TaskType;
@@ -10,13 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class TaskController extends AbstractController
 {
-    // /**
-    //  * @Route("/tasks", name="task_list")
-    //  */
-    // public function listAction()
-    // {
-    //     return $this->render('task/list.html.twig', ['tasks' => $this->getDoctrine()->getRepository('AppBundle:Task')->findAll()]);
-    // }
+    /**
+     * @Route("/tasks", name="task_list")
+     */
+    public function listAction()
+    {
+        return $this->render('task/list.html.twig', ['tasks' => $this->getDoctrine()->getRepository('AppBundle:Task')->findAll()]);
+    }
 
     // /**
     //  * @Route("/tasks/create", name="task_create")
