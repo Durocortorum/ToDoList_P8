@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -8,9 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SecurityController extends AbstractController
 {
-    // /**
-    //  * @Route("/login", name="login")
-    //  */
+    /**
+     * @Route("/login", name="login")
+     */
     // public function loginAction(Request $request)
     // {
     //     // $authenticationUtils = $this->get('security.authentication_utils');

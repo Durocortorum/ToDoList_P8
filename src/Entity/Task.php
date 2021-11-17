@@ -20,9 +20,9 @@ class Task
     private $id;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
-    private $create_At;
+    private $createAt;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -48,7 +48,7 @@ class Task
 
     public function __construct()
     {
-        $this->createdAt = new \Datetime();
+        $this->createAt = new \Datetime();
         $this->isDone = false;
     }
 
@@ -57,14 +57,14 @@ class Task
         return $this->id;
     }
 
-    public function getCreateAt(): ?\DateTimeImmutable
+    public function getCreateAt()
     {
-        return $this->create_At;
+        return $this->createAt;
     }
 
-    public function setCreateAt(\DateTimeImmutable $create_At): self
+    public function setCreateAt($createAt): self
     {
-        $this->create_At = $create_At;
+        $this->createAt = $createAt;
 
         return $this;
     }
