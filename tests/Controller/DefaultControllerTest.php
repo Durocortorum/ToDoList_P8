@@ -20,8 +20,10 @@ class DefaultControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/' );
+
         $this->assertSelectorTextContains('h1', 'Bienvenu sur mon site');
         $this->assertSelectorTextContains('h2', 'Bienvenu');
+
     }
 
 }
