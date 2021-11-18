@@ -15,6 +15,7 @@ class DefaultControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
+<<<<<<< HEAD
     public function testH1HelloPage()
     {
         $client = static::createClient();
@@ -24,5 +25,7 @@ class DefaultControllerTest extends WebTestCase
         $this->assertSelectorTextContains('h2', 'Bienvenu');
 
     }
+=======
+>>>>>>> dev
 
 }
