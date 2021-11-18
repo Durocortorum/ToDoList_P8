@@ -15,11 +15,5 @@ class DefaultControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    // public function testH1HelloPage()
-    // {
-    //     // $client = static::createClient();
-    //     // $client->request('GET', '/' );
-    //     // $this->assertSelectorTextContains('h1', 'Bienvenue sur Todo List');
-    // }
 
 }

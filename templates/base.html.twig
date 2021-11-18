@@ -7,8 +7,8 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>To Do List app</title>
-
+        <title>ToDoList</title>
+        <link rel="icon" type="image/png" href="img/favicon.png" />
         <!-- Bootstrap Core CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -24,10 +24,10 @@
     </head>
     <body>
        
-        <nav class="navbar navbar-light navbar-fixed-top" style="background-color: #2a5a7c;" role="navigation">
+        <nav class="navbar navbar-light navbar-fixed-top" style="background-color: #96c6d3;" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">To Do List app</a>
+                    <a class="navbar-brand" href="#">ToDoList</a>
 
                     <img src="{{ asset('img/Logo_OpenClassrooms.png') }}" alt="OpenClassrooms" />
                 </div>
@@ -38,19 +38,17 @@
         <div class="container">
             <div class="row">
                 <a href="" class="btn btn-primary">Créer un utilisateur</a>
-
-                {# {% if app.user %}
+                {% if app.user %}
                 <a href="{{ path('logout') }}" class="pull-right btn btn-danger">Se déconnecter</a>
                 {% endif %}
-
                 {% if not app.user and 'login' != app.request.attributes.get('_route') %}
                 <a href="{{ path('login') }}" class="btn btn-success">Se connecter</a>
-                {% endif %} #}
+                {% endif %}
             </div>
 
             <div class="row">
                 <div class="col-md-12">
-                    {# {% for flash_message in app.session.flashBag.get('success') %}
+                    {% for flash_message in app.session.flashBag.get('success') %}
                         <div class="alert alert-success" role="alert">
                             <strong>Superbe !</strong> {{ flash_message }}
                         </div>
@@ -60,7 +58,7 @@
                         <div class="alert alert-danger" role="alert">
                             <strong>Oops !</strong> {{ flash_message }}
                         </div>
-                    {% endfor %} #}
+                    {% endfor %}
 
                     {% block header_title %}{% endblock %}
                     {% block header_img %}<img class="slide-image" src="{{ asset('img/todolist_homepage.jpg') }}" alt="todo list">{% endblock %}
@@ -88,10 +86,7 @@
             </footer>
 
         </div>
-
         <script src="{{ asset('js/jquery.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        
-        
     </body>
 </html>
