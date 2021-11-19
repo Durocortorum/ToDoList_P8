@@ -3,16 +3,16 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
-use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserFixtures extends Fixture
 {
     /** @var UserPasswordEncoderInterface $encoder */
     private $encoder;
 
-    public function __construct(UserPasswordHasherInterface  $encoder)
+    public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->encoder = $encoder;
     }
@@ -27,10 +27,10 @@ class UserFixtures extends Fixture
         foreach ($users as $u) {
             $user = new User();
             $user->setEmail($u['email']);
-            $user->setName($u['username']);
-            $user->setRoles($u,'roles');
+            $user->setUsername($u['username']);
+            $user->setRole($u['role']);
 
-            $password = $this->encoder->hashPassword($user, $u['password']);
+            $password = $this->encoder->encodePassword($user, $u['password']);
             $user->setPassword($password);
 
             $manager->persist($user);

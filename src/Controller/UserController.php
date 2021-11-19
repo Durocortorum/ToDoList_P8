@@ -5,12 +5,12 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @IsGranted("ROLE_ADMIN")
@@ -28,7 +28,7 @@ class UserController extends AbstractController
     /**
      * @Route("/users/create", name="user_create")
      */
-    public function create(Request $request, UserPasswordHasherInterface $passwordEncoder, EntityManagerInterface $em): Response
+    public function create(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $em): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -36,7 +36,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword($passwordEncoder->hashPassword($user, $user->getPassword()));
+            $user->setPassword($passwordEncoder->encodePassword($user, $user->getPassword()));
 
             $em->persist($user);
             $em->flush();
@@ -52,14 +52,14 @@ class UserController extends AbstractController
     /**
      * @Route("/users/{id}/edit", name="user_edit")
      */
-    public function edit(User $user, Request $request, UserPasswordHasherInterface $passwordEncoder, EntityManagerInterface $em): Response
+    public function edit(User $user, Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(UserType::class, $user);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword($passwordEncoder->hashPassword($user, $user->getPassword()));
+            $user->setPassword($passwordEncoder->encodePassword($user, $user->getPassword()));
 
             $em->flush();
 

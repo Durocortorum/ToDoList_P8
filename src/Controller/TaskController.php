@@ -35,7 +35,7 @@ class TaskController extends AbstractController
     public function create(Request $request, EntityManagerInterface $em): Response
     {
         $task = new Task();
-        $task->setAuthor($this->getUser());
+        $task->setUser($this->getUser());
         $form = $this->createForm(TaskType::class, $task);
 
         $form->handleRequest($request);
@@ -58,7 +58,7 @@ class TaskController extends AbstractController
      */
     public function edit(Task $task, Request $request, EntityManagerInterface $em): Response
     {
-        if ($task->getAuthor() !== $this->getUser()) {
+        if ($task->getUser() !== $this->getUser()) {
             throw $this->createNotFoundException();
         }
 
@@ -85,7 +85,7 @@ class TaskController extends AbstractController
      */
     public function toggleTask(Task $task, EntityManagerInterface $em): Response
     {
-        if ($task->getAuthor() !== $this->getUser()) {
+        if ($task->getUser() !== $this->getUser()) {
             throw $this->createNotFoundException();
         }
 
@@ -102,7 +102,7 @@ class TaskController extends AbstractController
      */
     public function deleteTask(Task $task, EntityManagerInterface $em): Response
     {
-        if ($task->getAuthor() !== $this->getUser()) {
+        if ($task->getUser() !== $this->getUser()) {
             throw $this->createNotFoundException();
         }
 

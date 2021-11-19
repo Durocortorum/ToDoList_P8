@@ -23,13 +23,13 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
         $users = $this->userRepository->findAll();
 
         foreach ($users as $u) {
-            for ($i = 1; $i < 4; $i++) {
+            for ($i = 0; $i < 3; $i++) {
                 $task = new Task();
 
-                $task->setAuthor($u)
+                $task->setUser($u)
                     ->setTitle('Tâche ' . $i)
                     ->setContent('Contenu de la tâche ' . $i)
-                    ->setCreateAt(new \DateTime())
+                    ->setCreatedAt(new \DateTime())
                     ->setIsDone(false);
 
                 $manager->persist($task);
@@ -39,11 +39,9 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
                 $task = new Task();
 
                 $task
-                    
                     ->setTitle('Tâche anonyme')
                     ->setContent('Contenu de la tâche ')
-                    ->setAuthor($u)
-                    ->setCreateAt(new \DateTime())
+                    ->setCreatedAt(new \DateTime())
                     ->setIsDone(false);
 
                 $manager->persist($task);

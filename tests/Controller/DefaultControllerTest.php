@@ -14,6 +14,7 @@ class DefaultControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
     }
+<<<<<<< HEAD
 
 <<<<<<< HEAD
     public function testH1HelloPage()
@@ -28,4 +29,6 @@ class DefaultControllerTest extends WebTestCase
 =======
 >>>>>>> dev
 
+=======
+>>>>>>> dev
 }
