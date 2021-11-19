@@ -1,9 +1,13 @@
 security:
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+
     encoders:
-        App\Entity\User: auto
+        App\Entity\User: bcrypt
 
     providers:
-        doctrine:
+        app_user_provider:
             entity:
                 class: App\Entity\User
                 property: username
@@ -14,7 +18,7 @@ security:
             security: false
 
         main:
-            anonymous: true
+            anonymous: ~
             pattern: ^/
             form_login:
                 login_path: login
@@ -26,4 +30,5 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/users, roles: ROLE_ADMIN }
-        - { path: ^/, roles: ROLE_USER }
+        - { path: ^/tasks, roles: ROLE_USER }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }

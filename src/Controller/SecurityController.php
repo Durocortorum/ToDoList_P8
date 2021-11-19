@@ -9,7 +9,6 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-
     /**
      * @Route("/login", name="login")
      */
@@ -20,7 +19,7 @@ class SecurityController extends AbstractController
             'error'         => $utils->getLastAuthenticationError(),
         ));
     }
-    
+
     /**
      * @Route("/login_check", name="login_check")
      */
@@ -36,12 +35,4 @@ class SecurityController extends AbstractController
     {
         // This code is never executed.
     }
-
-
-
-
-
-
-
-
 }

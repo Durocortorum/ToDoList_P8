@@ -2,35 +2,36 @@
 
 namespace App\Entity;
 
-use App\Repository\TaskRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=TaskRepository::class)
+ * @ORM\Entity
+ * @ORM\Table
  */
 class Task
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $createAt;
+    private $createdAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Vous devez saisir un titre.")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Vous devez saisir du contenu.")
      */
     private $content;
 
@@ -41,54 +42,75 @@ class Task
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="tasks")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $author;
-
+    private $user;
 
     public function __construct()
     {
-        $this->createAt = new \Datetime();
+        $this->createdAt = new \Datetime();
         $this->isDone = false;
     }
 
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getCreateAt()
+    public function getCreatedAt(): \Datetime
     {
-        return $this->createAt;
+        return $this->createdAt;
     }
 
-    public function setCreateAt($createAt): self
+    public function setCreatedAt($createdAt): Task
     {
-        $this->createAt = $createAt;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getTitle(): ?string
+    public function getTitle()
     {
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle($title): Task
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getContent()
     {
         return $this->content;
     }
 
-    public function setContent(string $content): self
+    public function setContent($content): Task
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function isDone()
+    {
+        return $this->isDone;
+    }
+
+    public function toggle($flag)
+    {
+        $this->isDone = $flag;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
@@ -104,17 +126,4 @@ class Task
 
         return $this;
     }
-
-    public function getAuthor(): ?User
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(?User $author): self
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
 }
