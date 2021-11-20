@@ -4,13 +4,13 @@ namespace App\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DefaultControllerTest extends WebTestCase
+class SecurityControllerTest extends WebTestCase
 {
 
     public function testHomepageIsUp()
     {
         $client = static::createClient();
-        $client->request('GET', '/login');
+        $client->request('GET', '/');
 
         $this->assertResponseIsSuccessful();
     }

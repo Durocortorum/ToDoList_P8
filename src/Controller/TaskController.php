@@ -85,10 +85,6 @@ class TaskController extends AbstractController
      */
     public function toggleTask(Task $task, EntityManagerInterface $em): Response
     {
-        if ($task->getUser() !== $this->getUser()) {
-            throw $this->createNotFoundException();
-        }
-
         $task->toggle(!$task->isDone());
         $em->flush();
 
