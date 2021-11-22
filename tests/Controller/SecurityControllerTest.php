@@ -4,16 +4,32 @@ namespace App\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+
 class SecurityControllerTest extends WebTestCase
 {
-
-    public function testHomepageIsUp()
+    public function testLoginAction()
     {
         $client = static::createClient();
-        $client->request('GET', '/');
-
-        $this->assertResponseIsSuccessful();
+        $client->followRedirects();
+        $crawler = $client->request('GET', '/login');
+        $this->assertSame(1, $crawler->filter('input[name="_username"]')->count());
+        $form = $crawler->selectButton('Se connecter')->form();
+        $form['_username']->setValue('admin');
+        $form['_password']->setValue('admin');
+        $crawler = $client->submit($form);
     }
-
-
+    
+    public function testWrongLoginAction()
+    {
+        $client = static::createClient();
+        $client->followRedirects();
+        $crawler = $client->request('GET', '/login');
+        $this->assertSame(200, $client->getResponse()->getStatusCode());
+        $this->assertSame(1, $crawler->filter('input[name="_username"]')->count());
+        $form = $crawler->selectButton('Se connecter')->form();
+        $form['_username']->setValue('fault_account');
+        $form['_password']->setValue('fault_pwd');
+        $crawler = $client->submit($form);
+        $this->assertSame(1, $crawler->filter('div.alert.alert-danger')->count());
+    }
 }
