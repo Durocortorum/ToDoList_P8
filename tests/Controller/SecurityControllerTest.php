@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class SecurityControllerTest extends WebTestCase
 {
-    public function testLoginAction()
+    public function testLoginUser()
     {
         $client = static::createClient();
         $client->followRedirects();
@@ -19,7 +19,7 @@ class SecurityControllerTest extends WebTestCase
         $crawler = $client->submit($form);
     }
     
-    public function testWrongLoginAction()
+    public function testWrongLoginUser()
     {
         $client = static::createClient();
         $client->followRedirects();
@@ -32,4 +32,6 @@ class SecurityControllerTest extends WebTestCase
         $crawler = $client->submit($form);
         $this->assertSame(1, $crawler->filter('div.alert.alert-danger')->count());
     }
+    
+
 }

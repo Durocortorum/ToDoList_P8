@@ -23,7 +23,7 @@ class DefaultControllerTest extends WebTestCase
         $this->assertStringContainsString(
             "Bienvenue sur Todo List !",
             $crawler->filter('.col-md-12 h2')->text()
-        );       
+        );
+        $crawler->filter('form')->selectButton('Se connecter');
     }
-
 }

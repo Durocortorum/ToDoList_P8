@@ -30,7 +30,7 @@ class TaskController extends AbstractController
     }
 
     /**
-     * @Route("/tasks/create", name="task_create")
+     * @Route("/tasks/create", name="tasks_create")
      */
     public function create(Request $request, EntityManagerInterface $em): Response
     {
@@ -45,7 +45,7 @@ class TaskController extends AbstractController
             $em->persist($task);
             $em->flush();
 
-            $this->addFlash('success', 'La tâche a été bien été ajoutée.');
+            $this->addFlash('success', 'Superbe ! La tâche a été bien ajoutée .');
 
             return $this->redirectToRoute('task_list');
         }
@@ -58,9 +58,6 @@ class TaskController extends AbstractController
      */
     public function edit(Task $task, Request $request, EntityManagerInterface $em): Response
     {
-        if ($task->getUser() !== $this->getUser()) {
-            throw $this->createNotFoundException();
-        }
 
         $form = $this->createForm(TaskType::class, $task);
 
@@ -69,7 +66,7 @@ class TaskController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
 
-            $this->addFlash('success', 'La tâche a bien été modifiée.');
+            $this->addFlash('success', 'Superbe ! La tâche a bien été modifiée .');
 
             return $this->redirectToRoute('task_list');
         }
@@ -88,7 +85,7 @@ class TaskController extends AbstractController
         $task->toggle(!$task->isDone());
         $em->flush();
 
-        $this->addFlash('success', sprintf('La tâche %s a bien été marquée comme faite.', $task->getTitle()));
+        $this->addFlash('success', sprintf('Superbe ! La tâche %s a bien été marquée comme faite .', $task->getTitle()));
 
         return $this->redirectToRoute('task_list');
     }
