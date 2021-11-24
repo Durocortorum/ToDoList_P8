@@ -74,7 +74,7 @@ class UserController extends AbstractController
     /**
      * @Route("/users/{id}/delete", name="user_delete")
      */
-    public function deleteTask(User $user, EntityManagerInterface $em): Response
+    public function deleteUser(User $user, EntityManagerInterface $em): Response
     {
 
         $em->remove($user);

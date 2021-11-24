@@ -6,7 +6,6 @@ use App\Tests\AbstractWebTestCase;
 
 class UserControllerTest extends AbstractWebTestCase
 {
-
     public function testUsersPageForUserMustFail()
     {
         $client = $this->getAuthenticatedClient();
@@ -27,7 +26,7 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-        public function testCreateUser()
+    public function testCreateUser()
     {
         $client = $this->getAuthenticatedAdminClient();
 
@@ -51,7 +50,7 @@ class UserControllerTest extends AbstractWebTestCase
     {
         $client = $this->getAuthenticatedAdminClient();
 
-        $crawler = $client->request('GET', '/users/3/edit');
+        $crawler = $client->request('GET', '/users/2/edit');
 
         $form = $crawler->filter('form[name="user"]')->selectButton('Modifier')->form([
             'user[username]'   => 'modifiedusername',

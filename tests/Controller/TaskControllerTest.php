@@ -86,14 +86,5 @@ class TaskControllerTest extends AbstractWebTestCase
 
         $this->assertResponseIsSuccessful();
     }
-
-    public function testDeleteTaskOfAnotherUser()
-    {
-        $client = $this->getAuthenticatedClient();
-
-        $client->request('GET', '/tasks/5/delete');
-
-        $this->assertResponseStatusCodeSame(404);
-    }
     
 }

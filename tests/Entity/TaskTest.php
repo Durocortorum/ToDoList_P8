@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class TaskTest extends TestCase
 {
-    public function testAndGetCreatedAt()
+    public function testSetAndGetCreatedAt()
     {
         $task = new Task();
 
@@ -17,7 +17,7 @@ class TaskTest extends TestCase
         $this->assertEquals($date, $task->getCreatedAt());
     }
 
-    public function testAndGetIsDone()
+    public function testSetAndGetIsDone()
     {
         $task = new Task();
 
@@ -25,5 +25,4 @@ class TaskTest extends TestCase
 
         $this->assertEquals(true, $task->getIsDone());
     }
-
 }

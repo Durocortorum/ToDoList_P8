@@ -5,7 +5,6 @@ namespace App\Tests\Entity;
 use App\Entity\Task;
 use App\Entity\User;
 use PHPUnit\Framework\TestCase;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class UserTest extends TestCase
 {

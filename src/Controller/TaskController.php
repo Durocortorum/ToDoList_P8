@@ -30,7 +30,7 @@ class TaskController extends AbstractController
     }
 
     /**
-     * @Route("/tasks/create", name="tasks_create")
+     * @Route("/tasks/create", name="task_create")
      */
     public function create(Request $request, EntityManagerInterface $em): Response
     {
@@ -95,9 +95,6 @@ class TaskController extends AbstractController
      */
     public function deleteTask(Task $task, EntityManagerInterface $em): Response
     {
-        if ($task->getUser() !== $this->getUser()) {
-            throw $this->createNotFoundException();
-        }
 
         $em->remove($task);
         $em->flush();
