@@ -42,7 +42,6 @@ class TaskControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects();
         $client->followRedirect();
 
-        // $this->assertSelectorTextSame('div.alert.alert-success', 'Superbe ! La tâche a été bien ajoutée .');
         $this->assertResponseIsSuccessful();
     }
 
@@ -61,7 +60,6 @@ class TaskControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects();
         $client->followRedirect();
 
-        // $this->assertSelectorTextSame('div.alert.alert-success', 'Superbe ! La tâche a bien été modifiée .');
         $this->assertResponseIsSuccessful();
     }
 
@@ -74,7 +72,6 @@ class TaskControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects();
         $client->followRedirect();
 
-        // $this->assertSelectorTextSame('div.alert.alert-success', 'Superbe ! La tâche Tâche 0 a bien été marquée comme faite .');
         $this->assertResponseIsSuccessful();
     }
     
@@ -87,7 +84,6 @@ class TaskControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects();
         $client->followRedirect();
 
-        // $this->assertSelectorTextSame('div.alert.alert-success', 'Superbe ! La tâche a bien été supprimée.');
         $this->assertResponseIsSuccessful();
     }
 
