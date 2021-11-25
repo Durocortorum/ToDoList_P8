@@ -1,4 +1,5 @@
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b6bc9886dffa4a878cb4d4444826ad79)](https://app.codacy.com/gh/Durocortorum/ToDoList_P8?utm_source=github.com&utm_medium=referral&utm_content=Durocortorum/ToDoList_P8&utm_campaign=Badge_Grade_Settings)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/f123315ddb804fb7bcef3e386f62a0b3)](https://www.codacy.com/gh/Durocortorum/ToDoList_P8/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Durocortorum/ToDoList_P8&amp;utm_campaign=Badge_Grade)
 
 =======
