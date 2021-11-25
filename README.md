@@ -35,7 +35,7 @@ PHP (>= 7.1)
 #### Créer la base de données et charger les fixtures
 
 - ```php bin/console doctrine:database:create```
-- ```php bin/console doctrine:schema:create```
+- ```php bin/console doctrine:migrations:migrate```
 - ```php bin/console doctrine:fixtures:load```
 
 ### Démarer d'application
@@ -54,7 +54,7 @@ PHP (>= 7.1)
 #### Installation - Créer la base de données et charger les fixtures
 
 - ```php bin/console doctrine:database:create --env=test```
-- ```php bin/console doctrine:schema:create --env=test```
+- ```php bin/console doctrine:migrations:migrate --env=test```
 - ```php bin/console doctrine:fixtures:load --env=test```
 
 #### Lancer les tests
