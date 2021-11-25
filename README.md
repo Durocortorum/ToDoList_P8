@@ -1,4 +1,8 @@
 
+Rapport d'audit CODACY
+
+=======
+
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/f123315ddb804fb7bcef3e386f62a0b3)](https://www.codacy.com/gh/Durocortorum/ToDoList_P8/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Durocortorum/ToDoList_P8&amp;utm_campaign=Badge_Grade)
 
 =======
